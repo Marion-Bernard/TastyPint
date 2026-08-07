@@ -69,7 +69,7 @@ async function getOneBeer(beerId) {
     }
 }
 
-async function getOneBeer(foodName) {
+async function getOneBeerByFood(foodName) {
     // https://punkapi-alxiw.amvera.io/v3/beers?food=Sashimi
     try{
         const res = await fetch(`${BASE_URL}/beers?food=${foodName}`);
@@ -87,5 +87,6 @@ module.exports = {
     getDistinctFoodList,
     getFoodList,
     getBeerList,
-    getOneBeer
+    getOneBeer,
+    getOneBeerByFood
 };

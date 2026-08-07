@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require("axios");
 const app = express();
 const API_URL = "https://punkapi-alxiw.amvera.io/v3";
+const { getOneBeerByFood } = require('./services/BrewdogApiService');
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }))
@@ -12,6 +13,11 @@ app.get('/', function (req, res) {
   res.render("pages/Home");
 });
 
+app.get('/beerList', async function (req, res) {
+  const meal = req.query.meal;
+  const beers = await getOneBeerByFood(meal);
+  res.render("pages/BeerList", { beers });
+});
 
 
 app.listen(8080);
