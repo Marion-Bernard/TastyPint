@@ -9,7 +9,7 @@ const foodList = require('./foodList');
 
 const BASE_URL = 'https://punkapi-alxiw.amvera.io/v3/';
 
-async function getFoodList() {
+function getFoodList() {
     try{
         return foodList;
     } catch (err) {
