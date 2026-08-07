@@ -1,0 +1,31 @@
+body{
+  grid-template-rows:auto 1fr auto;
+}
+
+:root {
+  --brand-color-light: rgb(255, 229, 96);
+  --brand-color-dark: rgb(177, 76, 11);
+  --brand-color-dark-hover: rgb(150, 63, 9);
+  --brand-color-emphasis : var(--bs-warning)
+}
+
+a {
+  color: var(--brand-color-dark) !important;
+  text-decoration: none;
+}
+
+.text-brand-light {
+  color: var(--brand-color-light) !important;
+}
+
+.text-brand {
+  color: var(--brand-color-dark) !important;
+}
+
+.text-brand:hover {
+  color: var(--brand-color-dark-hover) !important;
+}
+
+.bg-brand {
+  background-color: var(--brand-color);
+}
