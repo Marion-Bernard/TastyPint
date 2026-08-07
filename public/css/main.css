@@ -6,7 +6,10 @@ body{
   --brand-color-light: rgb(255, 229, 96);
   --brand-color-dark: rgb(177, 76, 11);
   --brand-color-dark-hover: rgb(150, 63, 9);
-  --brand-color-emphasis : var(--bs-warning)
+  --brand-color-emphasis : var(--bs-warning);
+  --beer-gold: #d99a2b;
+  --hop-green: #4b7f3c;
+  --dark: #171717;
 }
 
 a {
@@ -28,4 +31,65 @@ a {
 
 .bg-brand {
   background-color: var(--brand-color);
+}
+
+/* HERO */
+.hero {
+  min-height: 90vh;
+  background:
+  linear-gradient(
+    rgba(0,0,0,.1),
+    rgba(0,0,0,.3)
+  ),
+  url('/images/hero.webp');
+  background-size: cover;
+  background-position: center;
+  color:white;
+}
+
+.hero-content {
+  max-width:800px;
+}
+
+.hero h1 {
+  color:var(--beer-gold);
+  text-shadow:
+  2px 2px 10px black;
+}
+
+.hero p {
+  text-shadow:
+  1px 1px 8px black;
+}
+
+
+/* bandeau pub */
+
+.pub-banner {
+  background:var(--dark);
+  color:white;
+  font-size:1.2rem;
+}
+
+/* cartes repas */
+.food-card {
+    border:none;
+    overflow:hidden;
+    border-radius:20px;
+    transition:.3s;
+}
+
+.food-card img {
+    height:220px;
+    object-fit:cover;
+}
+
+.food-card:hover {
+    transform:translateY(-10px);
+    box-shadow:
+    0 15px 30px rgba(0,0,0,.25)!important;
+}
+
+.food-card h3 {
+    color:var(--hop-green);
 }
