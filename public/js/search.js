@@ -6,7 +6,7 @@ search.addEventListener("keyup", function(){
     let cards = document.querySelectorAll(".meal-card");
     cards.forEach(card => {
         let name = card
-            .querySelector("h3")
+            .querySelector("p")
             .textContent
             .toLowerCase();
         if(name.includes(value)) {

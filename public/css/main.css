@@ -78,24 +78,24 @@ a, a:active {
 }
 
 /* cartes repas */
-.food-card {
+.meal-card {
     border:none;
     overflow:hidden;
     border-radius:20px;
     transition:.3s;
 }
 
-.food-card img {
+.meal-card img {
     height:220px;
     object-fit:cover;
 }
 
-.food-card:hover {
+.meal-card:hover {
     transform:translateY(-10px);
     box-shadow:
     0 15px 30px rgba(0,0,0,.25)!important;
 }
 
-.food-card h3 {
+.meal-card h3 {
     color:var(--hop-green);
 }
