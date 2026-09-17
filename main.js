@@ -21,6 +21,19 @@ app.get('/beerList', async function (req, res) {
   res.render("pages/BeerList", { beers });
 });
 
+// Gestion des erreurs
+app.use(function (err, req, res, next) {
+  console.error(err);
+  res.status(err.status || 500).render("pages/error", {
+    status: err.status || 500
+  });
+});
+
+
+app.use(function (req, res) {
+  res.status(404).render("pages/404");
+});
+
 
 app.listen(8080);
 console.log("server listenning at http://127.0.0.1:8080. Press ctrl+c to exit");

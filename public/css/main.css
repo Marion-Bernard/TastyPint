@@ -12,10 +12,16 @@ body{
   --dark: #171717;
 }
 
-a {
+a, a:active {
   color: var(--brand-color-dark) !important;
   text-decoration: none;
 }
+
+.dropdown-menu {
+    --bs-dropdown-link-active-bg: transparent;
+    --bs-dropdown-link-active-color: inherit;
+}
+
 
 .text-brand-light {
   color: var(--brand-color-light) !important;
