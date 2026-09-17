@@ -7,7 +7,7 @@ try {
 const foodList = require('./foodList');
 
 
-const BASE_URL = 'https://punkapi-alxiw.amvera.io/v3/';
+const BASE_URL = 'https://punkapi-alxiw.amvera.io/v3';
 
 function getFoodList() {
     try{
@@ -27,7 +27,7 @@ async function getDistinctFoodList() {
     try{
         const foodSet = new Set();
         for(let i = 1; i <= 14; i++) {
-            const res = await fetch(`${BASE_URL}beers?page=${i}`);
+            const res = await fetch(`${BASE_URL}/beers?page=${i}`);
             console.log(`${BASE_URL}beers?page=${i}`);
             const beers = await res.json();
 
@@ -70,9 +70,9 @@ async function getOneBeer(beerId) {
 }
 
 async function getOneBeerByFood(foodName) {
-    // https://punkapi-alxiw.amvera.io/v3/beers?food=Sashimi
+    // https://punkapi-alxiw.amvera.io/v3/beers?page=1&food=Sashimi
     try{
-        const res = await fetch(`${BASE_URL}/beers?food=${foodName}`);
+        const res = await fetch(`${BASE_URL}/beers?page=1&food=${foodName}`);
         const APIResp = await res.json();
         if (APIResp) {
             return APIResp

@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 app.get('/beerList', async function (req, res) {
   const meal = req.query.meal;
   const beers = await getOneBeerByFood(meal);
-  res.render("pages/BeerList", { beers });
+  res.render("pages/BeerList", { beers, meal });
 });
 
 // Gestion des erreurs
