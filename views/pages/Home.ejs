@@ -1,104 +1,81 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 	<%- include("../partials/Head", { title: "TastyPint" }) %>
 </head>
+
 <body class="d-grid min-vh-100">
 	<%- include("../partials/Header") %>
+		<main>
+			<section class="hero d-flex align-items-center justify-content-center text-center">
+				<div class="container hero-content">
+					<h1 class="display-1 fw-bold">
+						Tasty Pint
+					</h1>
 
-  <section class="hero d-flex align-items-center justify-content-center text-center">
+					<p class="lead fs-3">
+						Discover the perfect beer to enjoy with your meal.
+						Delicious food and Brewdog's beer pairings
+					</p>
 
-    <div class="container hero-content">
+					<a href="#accords" class="btn btn-warning btn-lg rounded-pill px-5 mt-4">
+						Find the perfect beer
+					</a>
 
-        <h1 class="display-1 fw-bold">
-            Tasty Pint
-        </h1>
+				</div>
 
-        <p class="lead fs-3">
-            Discover the perfect beer to enjoy with your meal.
-            Delicious food and Brewdog's beer pairings
-        </p>
+			</section>
 
-        <a href="#accords" class="btn btn-warning btn-lg rounded-pill px-5 mt-4">
-          Find the perfect beer
-        </a>
+			<%- include("../partials/Banner") %>
 
-    </div>
-
-</section>
-
-<%- include("../partials/Banner") %>
-
-<section id="accords" class="py-5">
-
-    <div class="container">
-
-       <div class="container my-5">
-
-    <input 
-        type="text" 
-        id="searchMeal"
-        class="form-control form-control-lg"
-        placeholder="Rechercher un plat..."
-    >
-
-    <div class="row mt-4" id="mealList">
-        <% meals.forEach(meal => { %>
-            <div class="col-md-3 mb-4 meal-card">
-                <div class="card shadow h-100">
-                  <div class="fs-1 mb-2 card-img-top text-center ">
-											<%= getFoodEmoji(meal) %>
+				<section id="accords" class="py-5">
+					<div class="container">
+						<div class="container my-5">
+							<input type="text" id="searchMeal" class="form-control form-control-lg"
+								placeholder="Rechercher un plat...">
+							<div class="row mt-4" id="mealList">
+								<% meals.forEach(meal=> { %>
+									<div class="col-md-3 mb-4 meal-card">
+										<div class="card shadow h-100">
+											<div class="fs-1 mb-2 card-img-top text-center ">
+												<%= getFoodEmoji(meal) %>
+											</div>
+											<div class="card-body text-center">
+												<p>
+													<%= meal %>
+												</p>
+												<a href="/beers/truc" class="btn btn-warning">
+													Voir les bières 🍺
+												</a>
+											</div>
 										</div>
-                    <div class="card-body text-center">
-                        <p>
-                            <%= meal %>
-                        </p>
-                
-                         <a href="/beers/truc"
-                           class="btn btn-warning">
-                            Voir les bières 🍺
-                        </a>
-                    </div>
-                </div>
-            </div>
-        <% }) %>
-    </div>
-</div>
-</section>
-<%
-function getFoodEmoji(food) {
-	const f = food.toLowerCase();
-	if (f.includes("chicken") || f.includes("poulet") || f.includes("turkey") || f.includes("duck")) return "🍗";
-	if (f.includes("beef") || f.includes("steak") || f.includes("bœuf")) return "🥩";
-	if (f.includes("pork") || f.includes("porc") || f.includes("bacon") || f.includes("ham")) return "🥓";
-	if (f.includes("banana")) return "🍌";
-	if (f.includes("pear")) return "🍐";
-	if (f.includes("fish") || f.includes("salmon") || f.includes("poisson")|| f.includes("sole") || f.includes("sashimi")) return "🐟";
-	if (f.includes("shrimp") || f.includes("prawn") || f.includes("crevette")) return "🍤";
-	if (f.includes("oyster") || f.includes("huître")) return "🦪";
-	if (f.includes("lamb") || f.includes("agneau")) return "🐑";
-	if (f.includes("aubergine") || f.includes("eggplant")) return "🍆";
-	if (f.includes("taco")) return "🌮";
-	if (f.includes("onion")) return "🧅";
-	if (f.includes("pizza")) return "🍕";
-	if (f.includes("pie")) return "🥧";
-	if (f.includes("cookie")) return "🍪";
-	if (f.includes("burger")) return "🍔";
-	if (f.includes("pasta") || f.includes("spaghetti")) return "🍝";
-	if (f.includes("rice") || f.includes("riz")) return "🍚";
-	if (f.includes("cheese") || f.includes("fromage") || f.includes("cheddar")) return "🧀";
-	if (f.includes("chocolate") || f.includes("chocolat")) return "🍫";
-	if (f.includes("cake") || f.includes("dessert") || f.includes("gâteau")) return "🍰";
-	if (f.includes("salad") || f.includes("salade")) return "🥗";
-	if (f.includes("soup") || f.includes("soupe")) return "🍲";
-	if (f.includes("curry")) return "🍛";
-	if (f.includes("mango") || f.includes("mangue")) return "🥭";
-	if (f.includes("lime") || f.includes("lemon") || f.includes("citron")) return "🍋";
-	if (f.includes("chilli") || f.includes("chili") || f.includes("spicy") || f.includes("épicé")) return "🌶️";
-	return "🍲";
-}
-%>
-	<%- include("../partials/Footer") %>
-  <script src="/js/search.js"></script>
+									</div>
+									<% }) %>
+							</div>
+						</div>
+				</section>
+		</main>
+		<% function getFoodEmoji(food) { const f=food.toLowerCase(); if (f.includes("chicken") || f.includes("poulet") ||
+			f.includes("turkey") || f.includes("duck")) return "🍗" ; if (f.includes("beef") || f.includes("steak") ||
+			f.includes("bœuf")) return "🥩" ; if (f.includes("pork") || f.includes("porc") || f.includes("bacon") ||
+			f.includes("ham")) return "🥓" ; if (f.includes("banana")) return "🍌" ; if (f.includes("pear")) return "🍐" ; if
+			(f.includes("fish") || f.includes("salmon") || f.includes("poisson")|| f.includes("sole") ||
+			f.includes("sashimi")) return "🐟" ; if (f.includes("shrimp") || f.includes("prawn") || f.includes("crevette"))
+			return "🍤" ; if (f.includes("oyster") || f.includes("huître")) return "🦪" ; if (f.includes("lamb") ||
+			f.includes("agneau")) return "🐑" ; if (f.includes("aubergine") || f.includes("eggplant")) return "🍆" ; if
+			(f.includes("taco")) return "🌮" ; if (f.includes("onion")) return "🧅" ; if (f.includes("pizza")) return "🍕" ;
+			if (f.includes("pie")) return "🥧" ; if (f.includes("cookie")) return "🍪" ; if (f.includes("burger")) return "🍔"
+			; if (f.includes("pasta") || f.includes("spaghetti")) return "🍝" ; if (f.includes("rice") || f.includes("riz"))
+			return "🍚" ; if (f.includes("cheese") || f.includes("fromage") || f.includes("cheddar")) return "🧀" ; if
+			(f.includes("chocolate") || f.includes("chocolat")) return "🍫" ; if (f.includes("cake") || f.includes("dessert")
+			|| f.includes("gâteau")) return "🍰" ; if (f.includes("salad") || f.includes("salade")) return "🥗" ; if
+			(f.includes("soup") || f.includes("soupe")) return "🍲" ; if (f.includes("curry")) return "🍛" ; if
+			(f.includes("mango") || f.includes("mangue")) return "🥭" ; if (f.includes("lime") || f.includes("lemon") ||
+			f.includes("citron")) return "🍋" ; if (f.includes("chilli") || f.includes("chili") || f.includes("spicy") ||
+			f.includes("épicé")) return "🌶️" ; return "🍲" ; } %>
+			<%- include("../partials/Footer") %>
+				<script src="/js/search.js"></script>
 </body>
+
 </html>

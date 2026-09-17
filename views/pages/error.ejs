@@ -8,41 +8,29 @@
 
 
 <body class="d-grid min-vh-100">
-
-	<!DOCTYPE html>
-	<html lang="en">
-
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Document</title>
-	</head>
-
-	<body>
-		<%- include ("../partials/header") %>
-		<div class="main hero">
-				<h1 class="text-white">Error <%= status %></h1>
-				<div class="face">
-					<div class="band">
-						<div class="top bg-white"></div>
-						<div class="middle bg-brand"></div>
-						<div class="bottom bg-warning"></div>
-					</div>
-					<div class="eyes"></div>
-					<div class="dimples"></div>
-					<div class="mouth"></div>
-				</div>
-			
-				<% if (status===500) { %>
-					<h1 class="text-white">Oops! Something went wrong internally ! </h1>
-				<% } else { %>
-					<h1 class="text-white">Oops! Something went wrong!</h1>
-				<% } %>
-				<div class="text-center">
-					<a href="/" class="btn btn-warning btn-lg rounded-pill px-5 mt-4">Return to Home</a>
-				</div>
+	<%- include ("../partials/header") %>
+	<div class="main hero">
+		<h1 class="text-white">Error <%= status %></h1>
+		<div class="face">
+			<div class="band">
+				<div class="top bg-white"></div>
+				<div class="middle bg-brand"></div>
+				<div class="bottom bg-warning"></div>
 			</div>
-			<%- include ("../partials/footer") %>
-	</body>
-
-	</html>
+			<div class="eyes"></div>
+			<div class="dimples"></div>
+			<div class="mouth"></div>
+		</div>
+	
+		<% if (status===500) { %>
+			<h1 class="text-white">Oops! Something went wrong internally ! </h1>
+		<% } else { %>
+			<h1 class="text-white">Oops! Something went wrong!</h1>
+		<% } %>
+		<div class="text-center">
+			<a href="/" class="btn btn-warning btn-lg rounded-pill px-5 mt-4">Return to Home</a>
+		</div>
+	</div>
+		<%- include ("../partials/footer") %>
+</body>
+</html>
