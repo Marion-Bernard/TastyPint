@@ -51,7 +51,34 @@ a, a:active {
 }
 
 .bg-brand {
-  background-color: var(--brand-color);
+  background-color: var(--brand-color-dark);
+}
+
+.beer-img-wrapper {
+    width: 200px;
+    min-width: 200px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    padding: 1rem;
+}
+
+.beer-img {
+    max-width: 100%;
+    max-height: 220px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 576px) {
+    .beer-img-wrapper {
+        width: 100%;
+        min-width: 0;
+        height: 220px;
+    }
 }
 
 /* HERO */
