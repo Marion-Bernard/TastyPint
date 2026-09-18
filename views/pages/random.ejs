@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<%- include("../partials/Head", { title: "TastyPint" }) %>
+</head>
+
+<body class="d-grid min-vh-100">
+	<%- include("../partials/Header") %>
+		<main>
+			<section id="beerlist" class="py-5">
+				<div class="container">
+					<h2 class="text-center text-brand mb-5">	Discover your beer of the day	</h2>
+					<div class="d-flex flex-column gap-4">
+						<% if (randomBeer) { %>
+							<div class="card beer-card shadow flex-row overflow-hidden">
+								<div class="beer-img-wrapper">
+									<img src="https://punkapi-alxiw.amvera.io/v3/images/<%= randomBeer.image %>"
+										alt="<%= randomBeer.name %>" class="beer-img" onerror="this.src='/images/beer-placeholder.png'">
+								</div>
+								<div class="card-body">
+									<h3 class="text-brand card-title"><%= randomBeer.name %></h3>
+									<p class="text-muted fst-italic mb-2"><%= randomBeer.tagline %> - First Brewed : <%= randomBeer.first_brewed %>	</p>
+									<p>	<%= randomBeer.description %>	</p>
+
+									<div class="d-flex flex-wrap gap-2 mt-3">
+										<span class="badge bg-warning text-dark" data-bs-toggle="tooltip" data-bs-placement="top"	title="Alcohol By Volume">ABV <%= randomBeer.abv %>%</span>
+										<span class="badge bg-brand" data-bs-toggle="tooltip" data-bs-placement="top"	title="Bitterness level">	IBU <%= randomBeer.ibu %>	</span>
+										<span class="badge bg-dark" data-bs-toggle="tooltip" data-bs-placement="top"	title="Color intensity">	EBC <%= randomBeer.ebc %>	</span>
+										<span class="badge bg-light text-dark border" data-bs-toggle="tooltip" data-bs-placement="top"title="Acidity level">pH <%= randomBeer.ph %></span>
+									</div>
+									<div class='mt-4'>
+										<p class="fw-bold"> Ingredients</p>
+										<ul>
+											<li>Yeast : <%= randomBeer.ingredients.yeast %> </li>
+											<li>Malt : <%= randomBeer.ingredients.malt.map(malt => malt.name).join(' / ') %></li>
+											<li>Hops : <%= randomBeer.ingredients.hops.map(hop => hop.name).join(' / ') %></li>
+										</ul>
+									</div>
+
+									<div class='mt-4'>
+										<p class="fw-bold">Food pairing</p>
+										<ul> <%randomBeer.food_pairing.forEach(food=> { %> <li> <%= food %> <% }) %> </li>	</ul>
+									</div>
+									<div class='mt-4'>
+										<p class="fw-bold text-brand">Brewer Tips</p>
+										<p> <%= randomBeer.brewers_tips %> - <span class="fst-italic">Contributed By <%= randomBeer.contributed_by %></span></p> 
+									</div>
+								</div>
+							</div>
+					</div>
+					<% } else { %>
+						<p> No drink for today ! </p>
+					<% } %>
+				</div>
+			</div>
+			</section>
+		</main>
+
+		<%- include("../partials/Footer") %>
+			<script>
+				document.addEventListener("DOMContentLoaded", () => {
+					const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+					tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
+				});
+			</script>
+</body>
+
+</html>
