@@ -1,18 +1,25 @@
-const search = document.getElementById("searchMeal");
+const searchMeal = document.getElementById("searchMeal");
 
-
-search.addEventListener("keyup", function(){
-    let value = search.value.toLowerCase();
+if (searchMeal) {
+  searchMeal.addEventListener("keyup", function () {
+    let value = searchMeal.value.toLowerCase();
     let cards = document.querySelectorAll(".meal-card");
     cards.forEach(card => {
-        let name = card
-            .querySelector("p")
-            .textContent
-            .toLowerCase();
-        if(name.includes(value)) {
-            card.style.display="block";
-        } else {
-            card.style.display="none";
-        }
+      let name = card.querySelector("p").textContent.toLowerCase();
+      card.style.display = name.includes(value) ? "block" : "none";
     });
-});
+  });
+};
+
+const searchBeer = document.getElementById("searchBeer");
+
+if (searchBeer) {
+  searchBeer.addEventListener("keyup", function () {
+    let value = searchBeer.value.toLowerCase();
+    let cards = document.querySelectorAll(".beer-card");
+    cards.forEach(card => {
+      let name = card.querySelector("h3").textContent.toLowerCase();
+      card.style.display = name.includes(value) ? "flex" : "none";
+    });
+  });
+};
