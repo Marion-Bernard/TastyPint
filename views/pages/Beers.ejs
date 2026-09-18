@@ -13,16 +13,17 @@
 					<h2 class="text-center mb-5">
 						Discover all Brewdog's beer
 					</h2>
+					<input type="text" id="searchBeer" class="form-control form-control-lg my-3" placeholder="Punk IPA., Mashtag, ..">
 					<div class="d-flex flex-column gap-4">
 						<% if (beers && beers.length> 0) { %>
 							<% beers.forEach(beer=> { %>
-								<div class="card meal-card shadow flex-row overflow-hidden">
+								<div class="card beer-card shadow flex-row overflow-hidden">
 									<div class="beer-img-wrapper">
 										<img src="https://punkapi-alxiw.amvera.io/v3/images/<%= beer.image %>" alt="<%= beer.name %>"
 											class="beer-img" onerror="this.src='/images/beer-placeholder.png'">
 									</div>
 									<div class="card-body">
-										<h3 class="text-brand card-title">
+										<h3 class="text-brand beer-name card-title">
 											<%= beer.name %>
 										</h3>
 										<p class="text-muted fst-italic mb-2">
@@ -74,6 +75,7 @@
 					tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
 				});
 			</script>
+			<script src="/js/search.js"></script>
 </body>
 
 </html>
