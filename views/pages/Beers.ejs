@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<%- include("../partials/Head", { title: "TastyPint" }) %>
+</head>
+
+<body class="d-grid min-vh-100">
+	<%- include("../partials/Header") %>
+		<main>
+			<section id="beerlist" class="py-5">
+				<div class="container">
+					<h2 class="text-center mb-5">
+						Discover all Brewdog's beer
+					</h2>
+					<div class="d-flex flex-column gap-4">
+						<% if (beers && beers.length> 0) { %>
+							<% beers.forEach(beer=> { %>
+								<div class="card meal-card shadow flex-row overflow-hidden">
+									<div class="beer-img-wrapper">
+										<img src="https://punkapi-alxiw.amvera.io/v3/images/<%= beer.image %>" alt="<%= beer.name %>"
+											class="beer-img" onerror="this.src='/images/beer-placeholder.png'">
+									</div>
+									<div class="card-body">
+										<h3 class="text-brand card-title">
+											<%= beer.name %>
+										</h3>
+										<p class="text-muted fst-italic mb-2">
+											<%= beer.tagline %>
+										</p>
+										<p>
+											<%= beer.description %>
+										</p>
+
+										<div class="d-flex flex-wrap gap-2 mt-3">
+											<span class="badge bg-warning text-dark" data-bs-toggle="tooltip" data-bs-placement="top"
+												title="Alcohol By Volume">
+												ABV <%= beer.abv %>%
+											</span>
+
+											<span class="badge bg-brand" data-bs-toggle="tooltip" data-bs-placement="top"
+												title="Bitterness level">
+												IBU <%= beer.ibu %>
+											</span>
+
+											<span class="badge bg-dark" data-bs-toggle="tooltip" data-bs-placement="top"
+												title="Color intensity">
+												EBC <%= beer.ebc %>
+											</span>
+
+											<span class="badge bg-light text-dark border" data-bs-toggle="tooltip" data-bs-placement="top"
+												title="Acidity level">
+												pH <%= beer.ph %>
+											</span>
+										</div>
+									</div>
+								</div>
+								<% }) %>
+									<% } else { %>
+										<div class="text-center">
+											<p>No beer matches your meal :O</p>
+										</div>
+										<% } %>
+					</div>
+				</div>
+			</section>
+			<%- include("../partials/Banner") %>
+		</main>
+
+		<%- include("../partials/Footer") %>
+			<script>
+				document.addEventListener("DOMContentLoaded", () => {
+					const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+					tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
+				});
+			</script>
+</body>
+
+</html>

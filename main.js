@@ -2,10 +2,7 @@ const express = require('express');
 const axios = require("axios");
 const app = express();
 const API_URL = "https://punkapi-alxiw.amvera.io/v3";
-const { getOneBeerByFood } = require('./services/BrewdogApiService');
-const { getFoodList } = require('./services/BrewdogApiService');
-const { getOneRandomBeer} = require('./services/BrewdogApiService')
-
+const { getOneBeerByFood, getFoodList, getOneRandomBeer, getAllBeers } = require('./services/BrewdogApiService');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }))
 
@@ -24,13 +21,18 @@ app.get('/beerList', async function (req, res) {
 
 app.get('/random', async function (req, res) {
   const randomBeer = await getOneRandomBeer();
-  res.render("pages/random", { randomBeer });
+  res.render("pages/Random", { randomBeer });
+});
+
+app.get('/beers', async function (req, res) {
+  const beers = await getAllBeers();
+  res.render("pages/Beers", { beers });
 });
 
 // Gestion des erreurs
 app.use(function (err, req, res, next) {
   console.error(err);
-  res.status(err.status || 500).render("pages/error", {
+  res.status(err.status || 500).render("pages/Error", {
     status: err.status || 500
   });
 });

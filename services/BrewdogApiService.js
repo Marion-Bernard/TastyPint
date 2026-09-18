@@ -58,6 +58,25 @@ async function getBeerList(pagenumber) {
 	}
 }
 
+async function getAllBeers() {
+	let allBeers = [];
+	let page = 1;
+	let hasMore = true;
+
+	while (hasMore) {
+		const beers = await getBeerList(page);
+
+		if (beers && beers.length > 0) {
+			allBeers = allBeers.concat(beers);
+			page++;
+		} else {
+			hasMore = false;
+		}
+	}
+	allBeers.sort((a, b) => a.name.localeCompare(b.name));
+	return allBeers;
+}
+
 async function getOneBeer(beerId) {
 	try {
 		const res = await fetch(`${BASE_URL}/beers/${beerId}`);
@@ -104,5 +123,6 @@ module.exports = {
 	getBeerList,
 	getOneBeer,
 	getOneBeerByFood,
-	getOneRandomBeer
+	getOneRandomBeer,
+	getAllBeers
 };
